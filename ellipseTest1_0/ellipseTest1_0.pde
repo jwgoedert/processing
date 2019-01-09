@@ -10,10 +10,14 @@ void setup() {
 void draw() {
   // Draw something good here
   int half = width/2;
-  for(int i = 0; i < width/3*2; i = i +15) {
+  int quarter = half/2;
+  for(int i = 0; i < width/3*2; i = i + 25) {
     noFill();
-    ellipse(half, half, i, i);  
-    
+    ellipse(half, half, i, i);
+    ellipse(quarter, quarter, i, i);
+    ellipse(half + quarter, half + quarter, i, i);
+    ellipse(quarter, half + quarter, i, i);
+    ellipse(half + quarter, quarter, i, i);
   }
 
   endRecord();
