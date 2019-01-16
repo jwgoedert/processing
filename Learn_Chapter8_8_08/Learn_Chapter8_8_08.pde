@@ -14,6 +14,7 @@ for (int x = 0; x < 100; x++) {
   point(x,y); 
 }
 
+//use norm and pow 
 noFill();
 smooth();
 for (int x = 0; x < 100; x += 5) {
