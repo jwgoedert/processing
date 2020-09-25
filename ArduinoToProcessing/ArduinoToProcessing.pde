@@ -29,7 +29,9 @@ void draw()
   println(myPort.read());
   if ( myPort.available() > 0) {  // If data is available,
     val = myPort.read(); // read it and store it in val
+    println("port available");
     println(val);
+    
   }
   background(255);             // Set background to white
   if (val == 0) {              // If the serial value is 0,
