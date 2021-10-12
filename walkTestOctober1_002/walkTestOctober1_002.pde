@@ -3,10 +3,10 @@ import processing.svg.*;
 int w = 8000;
 int h = 600;
 int step = 1;
-int startX = width/2;
-int startY = height/2;
-int endX = 0;
-int endY = 0;
+int startX = 100;
+int startY = 100;
+int endX = 140;
+int endY = 100;
 int move = 3;
 int dist = 10;
 
@@ -39,8 +39,17 @@ void blast(){
 void keyPressed() {
   blast();
 }
-
+void draw4(int x1, int y1, int x2, int y2) {
+  int ranStep = (int(random(-move, move)));
+  line(x1, y1, x2, y2);
+  line(x2 , y2 , x2 + ranStep*10, y2 +ranStep*10);
+  line(x2 + ranStep, y2 + ranStep, x1, y2 + ranStep);
+  line(x1, y2 + ranStep, x1, y1);
+  
+}
+void draw5() {
+}
 void draw(){
   //endRecord();
-  blast();
+  draw4(startX, startY, endX, endY);
 }
