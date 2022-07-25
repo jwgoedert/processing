@@ -80,6 +80,7 @@ void rawMidi(byte[] data) { // You can also use rawMidi(byte[] data, String bus_
   // In these cases (data[0] & 0xF0) gives you the command and (data[0] & 0x0F) gives you the channel
   for (int i = 1;i < data.length;i++) {
     println("Param "+(i+1)+": "+(int)(data[i] & 0xFF));
+    ellipse(data[2] & 0xFF, 50, 25,25);
   }
 }
 
@@ -94,7 +95,7 @@ void midiMessage(MidiMessage message) { // You can also use midiMessage(MidiMess
   for (int i = 1;i < message.getMessage().length;i++) {
     println("Param "+(i+1)+": "+(int)(message.getMessage()[i] & 0xFF));
     if(i == 2){
-      int res = (int)(message.getMessage()[i] & 0xFF));
+      int res = (int)(message.getMessage()[i] & 0xFF);
       stroke(128);
       ellipse(res,res,res,res);
     };

@@ -1,3 +1,5 @@
+import processing.svg.*;
+
 float cols = 3;
 float rows = 10;
 float margin  = 5;
@@ -6,7 +8,7 @@ float w = 0;
 float count = 0;
 float holeSize = 0;
 void setup(){
-  size(1600,800);
+  size(1600,1000, SVG, "SVGTest001.svg");
   background(255);
   h = height/rows;
   w = width/cols;
@@ -34,4 +36,5 @@ void draw(){
       count++;
     }
   }
+  //exit();
 }
