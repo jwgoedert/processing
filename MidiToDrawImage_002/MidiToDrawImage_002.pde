@@ -4,6 +4,7 @@ import javax.sound.midi.SysexMessage;
 import javax.sound.midi.ShortMessage;
 PImage img;
 PShape bldg;
+PImage[] blobs = new PImage[6];
 
 
 MidiBus myBus; // The MidiBus
@@ -16,6 +17,10 @@ void setup() {
   background(255);
   //bldg = loadShape("BLDGTest1_0merged.svg");
   img = loadImage("BLDGTest1_0merged.png");
+  //blobs[0] = loadImage("AugustFillin_001.png");
+  for(int i = 0; i < blobs.length; i++){
+    blobs[i] = loadImage("FillinProcessing/AugustFillin_00" + (i+1) + ".png");
+  }
   MidiBus.list(); // List all available Midi devices on STDOUT. This will show each device's index and name.
   myBus = new MidiBus(this, 0, 0); // Create a new MidiBus object
 
@@ -118,13 +123,16 @@ void rawMidi(byte[] data) { // You can also use rawMidi(byte[] data, String bus_
             x = 0;
           }
       //ellipse(x, y, 10,10); 
-      //rect(x,y,x,20);
+      int ranR = int(random(0,255));
+      int ranG = int(random(0,255));
+      int ranB = int(random(0,255));
+      fill(ranR, ranG, ranB);
+      noStroke();
+      rect(x,y,x,20);
       //rotate(PI/3.0);
+      int ranBlob = int(random(0,blobs.length));
       image(img, x, y, y, y);
-
-      
-      
- 
+      image(blobs[ranBlob], x, y, y, y);
 }
 
 void midiMessage(MidiMessage message) { // You can also use midiMessage(MidiMessage message, long timestamp, String bus_name)
