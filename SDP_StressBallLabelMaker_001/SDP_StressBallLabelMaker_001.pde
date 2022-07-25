@@ -1,5 +1,6 @@
 import processing.svg.*;
-
+PFont london;
+String[] fontList = PFont.list();
 float cols = 3;
 float rows = 10;
 float margin  = 5;
@@ -8,11 +9,15 @@ float w = 0;
 float count = 0;
 float holeSize = 0;
 void setup(){
-  size(1600,1000, SVG, "SVGTest001.svg");
+  printArray(fontList);
+  size(1600,1000);
   background(255);
   h = height/rows;
   w = width/cols;
   holeSize = h/3;
+  noLoop();
+  beginRecord(SVG, "SVGTest001.svg");
+  london = createFont("OldLondonAlternate", 32);
 }
 
 void draw(){
@@ -28,6 +33,10 @@ void draw(){
       rect(xStart + margin, yStart + margin, w - 4*margin, h - 4*margin, 16);
       fill(0,0,0);
       textSize(h/4);
+      
+      int fontChoice = (int)random(0,fontList.length);
+      PFont f = createFont(fontList[fontChoice], 32);
+      textFont(f, random(16, 48));
       textAlign(LEFT, CENTER);
       text("Testing This Sample Stress", xStart + h, yStart, w - 4*margin, h - 4*margin);
       stroke(0);
@@ -36,5 +45,5 @@ void draw(){
       count++;
     }
   }
-  //exit();
+  endRecord();
 }
