@@ -1,8 +1,8 @@
 import processing.svg.*;
 PFont london;
 String[] fontList = PFont.list();
-float cols = 3;
-float rows = 10;
+float cols = 4;
+float rows = 8;
 float margin  = 5;
 float h = 0;
 float w = 0;
@@ -22,9 +22,9 @@ void setup(){
   background(255);
   h = height/rows;
   w = width/cols;
-  holeSize = h/3;
+  holeSize = h/5;
   noLoop();
-  beginRecord(SVG, "SVGTest005.svg");
+  beginRecord(SVG, "SVGTest006.svg");
   london = createFont("OldLondonAlternate", 32);
 }
 
@@ -33,7 +33,6 @@ void draw(){
   float yStart = 0;
   for (int i = 0; i < cols; i++){
     for (int j = 0; j < rows; j++){
-      //rect(i * w, j * h, w, h);
       fill(255);
       xStart = i * w + margin;
       yStart = j * h + margin;
@@ -47,13 +46,11 @@ void draw(){
       println(f);
       textFont(f, random(24, 48));
       textAlign(LEFT, CENTER);
-      //text("Testing This Sample Stress", xStart + h, yStart, w - 4*margin, h - 4*margin);
       TableRow flavor = flavors.getRow((int)count);
-      //text(flavor.getString("Flavor"), xStart + h, yStart, w - 4*margin, h - 4*margin);
-      text(flavor.getString("Flavor"), xStart + h, yStart, w - 4*margin, h - 4*margin);
+      text(flavor.getString("Flavor"), xStart + h/2, yStart + margin, w - 4*margin, h - 4*margin);
       stroke(0);
       fill(255);
-      ellipse(xStart+ h/2, yStart + h/2 - margin, holeSize, holeSize);
+      ellipse(xStart+ h/4, yStart + h/2 - margin, holeSize, holeSize);
       count++;
     }
   }
